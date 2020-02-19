@@ -110,6 +110,16 @@ body{
   max-height: 95vh;
   overflow-y: scroll;
 }
+.float-custom{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -240px;
+  width: 65%;
+}
+
+.small{
+  font-size: 12px !important;
+}
 
 /* -------------------customised css stop---------------------- */
 

@@ -243,8 +243,8 @@
                                                 <button type="button" class="btn btn-outline-success">Done job <i class="fa fa-check"></i></button>
                                             </div>
                                             <div class="float-right">
-                                                <button type="button" class="btn btn-outline-primary"><i class="fa fa-edit"></i></button>
-                                                <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
+                                                <button type="button" class="btn btn-outline-primary small"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-outline-danger small"><i class="fa fa-trash"></i></button>
                                             </div>
                                             
                                         </div>
@@ -272,8 +272,8 @@
                                                 <button type="button" class="btn btn-outline-success">Done job <i class="fa fa-check"></i></button>
                                             </div>
                                             <div class="float-right">
-                                                <button type="button" class="btn btn-outline-primary"><i class="fa fa-edit"></i></button>
-                                                <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
+                                                <button type="button" class="btn btn-outline-primary small"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-outline-danger small"><i class="fa fa-trash"></i></button>
                                             </div>
                                             
                                         </div>
@@ -300,8 +300,8 @@
                                                 <button type="button" class="btn btn-outline-success">Done job <i class="fa fa-check"></i></button>
                                             </div>
                                             <div class="float-right">
-                                                <button type="button" class="btn btn-outline-primary"><i class="fa fa-edit"></i></button>
-                                                <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
+                                                <button type="button" class="btn btn-outline-primary small"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-outline-danger small"><i class="fa fa-trash"></i></button>
                                             </div>
                                             
                                         </div>
@@ -328,8 +328,8 @@
                                                 <button type="button" class="btn btn-outline-success">Done job <i class="fa fa-check"></i></button>
                                             </div>
                                             <div class="float-right">
-                                                <button type="button" class="btn btn-outline-primary"><i class="fa fa-edit"></i></button>
-                                                <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
+                                                <button type="button" class="btn btn-outline-primary small"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-outline-danger small"><i class="fa fa-trash"></i></button>
                                             </div>
                                             
                                         </div>
@@ -356,8 +356,8 @@
                                                 <button type="button" class="btn btn-outline-success">Done job <i class="fa fa-check"></i></button>
                                             </div>
                                             <div class="float-right">
-                                                <button type="button" class="btn btn-outline-primary"><i class="fa fa-edit"></i></button>
-                                                <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
+                                                <button type="button" class="btn btn-outline-primary small"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="btn btn-outline-danger small"><i class="fa fa-trash"></i></button>
                                             </div>
                                             
                                         </div>
