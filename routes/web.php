@@ -15,3 +15,11 @@ Route::get('/client', function(){
 Route::get('user/profile', function(){
     return view('painter.profile');
 })->name('painterProfile');
+
+Route::get('client/profile', function(){
+    return view('client.profile');
+})->name('clientProfile');
+
+Route::get('/contactUs', function(){
+    return view('contact');
+})->name('contactUs');

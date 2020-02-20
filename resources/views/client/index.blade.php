@@ -429,16 +429,14 @@
         </div>
     </section>
 
-    @endsection
-
-    {{-- <script>
-        $('.popover').popover({ 
-            html : true,
-            title: function() {
-            return $(".popover-head").html();
-            },
-            content: function() {
-            return $(".popover-content").html();
-            }
+     <script>
+        $(document).ready(function(){
+            alert('Client');
+            // $('.media-header').on('click', function(e){
+            //     e.preventDefault();
+            //     $('#proposal').modal('show');
+            // })
         });
-    </script> --}}
+    </script>
+
+    @endsection

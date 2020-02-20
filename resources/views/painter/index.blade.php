@@ -397,11 +397,11 @@
 
     <script>
         $(document).ready(function(){
-            // $(".txtEditor").Editor();   
             $('.media-header').on('click', function(e){
                 e.preventDefault();
                 $('#proposal').modal('show');
             })
         });
     </script>
+    
 @endsection

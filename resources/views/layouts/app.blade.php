@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('vendor/fontawesome/css/font-awesome.css')}}" />
 
     <script src="{{asset('js/jquery.min.js')}}"></script>
+    {{-- <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')}}"></script> --}}
     
   </head>
   <body>
