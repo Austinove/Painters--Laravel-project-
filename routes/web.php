@@ -23,3 +23,7 @@ Route::get('client/profile', function(){
 Route::get('/contactUs', function(){
     return view('contact');
 })->name('contactUs');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
