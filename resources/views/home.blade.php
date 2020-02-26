@@ -23,63 +23,99 @@
     			<div class="col-md-12	featured-top">
     				<div class="row no-gutters">
 	  					<div class="col-md-5 d-flex align-items-center">
-	  						<form action="#" class="request-form ftco-animate bg-primary">
-		          		        <h2>Register As Painter</h2>
+	  						<form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" class="request-form ftco-animate bg-primary">
+                                  <h2>Register As Painter</h2>
+                                  {{ csrf_field() }}
 			    				<div class="form-group">
 			    					<label for="firstName" class="label">First Name*</label>
-			    					<input type="text" class="firstName form-control" placeholder="First Name" autocomplete="false">
+                                    <input type="text" id="firstname" name="firstname" value="{{ old('firstname') }}"  class="firstName form-control @error('fistname') is-invalid @enderror" placeholder="First Name" autocomplete="off">
+                                    @error('firstname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
 			    				</div>
 			    				<div class="form-group">
 			    					<label for="secondName" class="label">Second Name*</label>
-			    					<input type="text" class="secondName form-control" placeholder="Second Name" autocomplete="false">
+                                    <input type="text" id="secondname" name="secondname" value="{{ old('secondname') }}" class="secondName form-control @error('secondname') is-invalid @enderror" placeholder="Second Name" autocomplete="off">
+                                    @error('secondname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    
                                 </div>
 			    				<div class="d-flex">
 			    					<div class="form-group mr-2">
                                         <label for="profilePic" class="label">Profile Picture</label>
+                                        {{-- <input type="file" id="image" name="image" /> --}}
                                         <div class="custom-file mb-3">
-                                            <input type="file" class="custom-file-input" id="customFile" name="filename">
+                                            <input type="file" id="image" class="custom-file-input @error('image') is-invalid @enderror" id="customFile" name="image">
                                             <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
+                                        @error('image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group ml-2">
                                         <label for="" class="label">Gender</label>
-                                        <select name="cars" class="custom-select mb-3">
-                                            <option selected>Select Gender</option>
+                                        <select name="gender" id="gender" class="custom-select mb-3 @error('gender') is-invalid @enderror">
+                                            <option value="">Select Gender</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
+                                        @error('gender')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
 			    					<label for="email" class="label">Your Email*</label>
-			    					<input type="email" class="email form-control" placeholder="E.g painter@painter.com" autocomplete="false">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
 			    				</div>
                                 <div class="d-flex">
 			    					<div class="form-group mr-2">
                                         <label for="password" class="label">Password*</label>
-			    					<input type="password" class="password form-control" placeholder="Password" autocomplete="false">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     </div>
                                     <div class="form-group ml-2">
                                         <label for="confirmPassword" class="label">Confirm Password*</label>
-			    					<input type="password" class="confirmPassword form-control" placeholder="Confirm Password" autocomplete="false">
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                        <input type="hidden" name="role" value="P">
+                                        
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                <input type="submit" value="Register" class="btn btn-secondary py-3 px-4">
+                                    <input type="hidden" name="token" value={{csrf_token()}}/>
+                                    <button type="submit" class="btn btn-secondary py-3 px-4">Register</button>
                                 </div>
 			    			</form>
                         </div>
               
                         <div class="col-md-5 d-flex align-items-center offset-md-1">
 	  						<form action="#" class="request-form ftco-animate bg-primary">
-		          		        <h2>Register As Painter</h2>
+		          		        <h2>Register As Client</h2>
 			    				<div class="form-group">
 			    					<label for="firstName" class="label">First Name*</label>
-			    					<input type="text" class="firstName form-control" placeholder="First Name" autocomplete="false">
+			    					<input type="text" class="firstName form-control" placeholder="First Name" autocomplete="off">
 			    				</div>
 			    				<div class="form-group">
 			    					<label for="secondName" class="label">Second Name*</label>
-			    					<input type="text" class="secondName form-control" placeholder="Second Name" autocomplete="false">
+			    					<input type="text" class="secondName form-control" placeholder="Second Name" autocomplete="off">
                                 </div>
 			    				<div class="d-flex">
 			    					<div class="form-group mr-2">
@@ -100,20 +136,21 @@
                                 </div>
                                 <div class="form-group">
 			    					<label for="email" class="label">Your Email*</label>
-			    					<input type="email" class="email form-control" placeholder="E.g painter@painter.com" autocomplete="false">
+			    					<input type="email" class="email form-control" placeholder="E.g painter@painter.com" autocomplete="off">
 			    				</div>
                                 <div class="d-flex">
 			    					<div class="form-group mr-2">
                                         <label for="password" class="label">Password*</label>
-			    					<input type="password" class="password form-control" placeholder="Password" autocomplete="false">
+			    					<input type="password" class="password form-control" placeholder="Password" autocomplete="off">
                                     </div>
                                     <div class="form-group ml-2">
                                         <label for="confirmPassword" class="label">Confirm Password*</label>
-			    					<input type="password" class="confirmPassword form-control" placeholder="Confirm Password" autocomplete="false">
+			    					<input type="password" class="confirmPassword form-control" placeholder="Confirm Password" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                <input type="submit" value="Register" class="btn btn-secondary py-3 px-4">
+                                    <input type="hidden" name="role" value="C">
+                                    <input type="submit" value="Register" class="btn btn-secondary py-3 px-4">
                                 </div>
 			    			</form>
                         </div>
