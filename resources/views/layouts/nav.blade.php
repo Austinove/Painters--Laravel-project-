@@ -8,14 +8,14 @@
     <div class="collapse navbar-collapse" id="ftco-nav">
             
         <ul class="navbar-nav ml-auto">
-            @guest
+            {{-- @guest --}}
         <li class="nav-item active"><a href="{{route('home')}}" class="nav-link"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-        <li class="nav-item"><a href="contact.html" class="nav-link"><i class="fa fa-sign-in" aria-hidden="true"></i> Signin</a></li>
+        <li class="nav-item"><a href="#" class="nav-link login"><i class="fa fa-sign-in" aria-hidden="true"></i> Signin</a></li>
         <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a></li>
         @if (Route::has('login'))
             @auth
                 
-                @if (Auth::user()->role == "C")
+                @if (Auth::user())
                     <li class="nav-item"><a href="{{route('clientDashboard')}}" class="nav-link"> <i class="fa fa-paint-brush" aria-hidden="true"></i> Client</a></li>
                     <li class="nav-item"><a href="{{route('clientProfile')}}" class="nav-link"><i class="fa fa-question-circle" aria-hidden="true"></i> C-Profile</a></li>
                 @else
@@ -36,7 +36,7 @@
         @endif
         <li class="nav-item"><a href="{{route('contactUs')}}" class="nav-link"><i class="fa fa-phone" aria-hidden="true"></i> Contact</a></li>
         
-            @endguest
+            {{-- @endguest --}}
         </ul>
     </div>
     </div>
