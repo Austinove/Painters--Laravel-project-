@@ -431,7 +431,7 @@
 
      <script>
         $(document).ready(function(){
-            alert('Client');
+            // alert('Client');
             // $('.media-header').on('click', function(e){
             //     e.preventDefault();
             //     $('#proposal').modal('show');

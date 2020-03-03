@@ -4,21 +4,6 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/user', function(){
-    return view('painter.index');
-})->name('painterDashboard');
-
-Route::get('/client', function(){
-    return view('client.index');
-})->name('clientDashboard');
-
-Route::get('user/profile', function(){
-    return view('painter.profile');
-})->name('painterProfile');
-
-Route::get('client/profile', function(){
-    return view('client.profile');
-})->name('clientProfile');
 
 Route::get('/contactUs', function(){
     return view('contact');
@@ -28,13 +13,25 @@ Route::get('/contactUs', function(){
 
 
 Auth::routes();
-// Auth::routes(['register' => false]);
-// Route::post('/regis', 'Auth\RegisterController@register')->name('register-user');
-// Route::post('/register', function($request){
-//     return $request;
-// })->name('register-user');
-Route::get('profile', function () {
+
+Route::get('painter', function () {
     return view('painter.index');
-})->middleware('auth');
+})->name('painterDashboard')->middleware('auth');
+
+Route::get('painter/profile', function () {
+    return view('painter.profile');
+})->name('painterProfile')->middleware('auth');
+
+Route::get('/painter/opportunities', function () {
+    return view('painter.index');
+})->name('opportunities')->middleware('auth');
+
+Route::get('/client', function () {
+    return view('client.index');
+})->name('clientDashboard')->middleware('auth');
+
+Route::get('client/profile', function () {
+    return view('client.profile');
+})->name('clientProfile')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');

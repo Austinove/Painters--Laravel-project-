@@ -8,20 +8,17 @@
     <div class="collapse navbar-collapse" id="ftco-nav">
             
         <ul class="navbar-nav ml-auto">
-            {{-- @guest --}}
         <li class="nav-item active"><a href="{{route('home')}}" class="nav-link"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link login"><i class="fa fa-sign-in" aria-hidden="true"></i> Signin</a></li>
         <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a></li>
-        @if (Route::has('login'))
-            @auth
-                
-                @if (Auth::user())
-                    <li class="nav-item"><a href="{{route('clientDashboard')}}" class="nav-link"> <i class="fa fa-paint-brush" aria-hidden="true"></i> Client</a></li>
-                    <li class="nav-item"><a href="{{route('clientProfile')}}" class="nav-link"><i class="fa fa-question-circle" aria-hidden="true"></i> C-Profile</a></li>
-                @else
-                    <li class="nav-item"><a href="{{route('painterDashboard')}}" class="nav-link"> <i class="fa fa-paint-brush" aria-hidden="true"></i> Opportunities</a></li>
-                    <li class="nav-item"><a href="{{route('painterProfile')}}" class="nav-link"><i class="fa fa-user" aria-hidden="true"></i> P-Profile</a></li>
-                @endif
+        @if (Auth::user())
+                    @if (Auth()->user()->role=="C")
+                        <li class="nav-item"><a href="{{route('clientDashboard')}}" class="nav-link"> <i class="fa fa-id-badge" aria-hidden="true"></i>Client</a></li>
+                        <li class="nav-item"><a href="{{route('clientProfile')}}" class="nav-link"><i class="fa fa-question-circle" aria-hidden="true"></i>Profile</a></li>
+                    @elseif (Auth()->user()->role=="P")
+                        <li class="nav-item"><a href="{{route('opportunities')}}" class="nav-link"> <i class="fa fa-paint-brush" aria-hidden="true"></i>Opportunities</a></li>
+                        <li class="nav-item"><a href="{{route('painterDashboard')}}" class="nav-link"> <i class="fa fa-bullseye" aria-hidden="true"></i>Painter</a></li>
+                        <li class="nav-item"><a href="{{route('painterProfile')}}" class="nav-link"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+                    @endif
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
                         Logout 
@@ -31,12 +28,11 @@
                         @csrf
                     </form>
                 </li>
-            @else
-            @endauth
+        @else
+            <li class="nav-item"><a href="#" class="nav-link login"><i class="fa fa-sign-in" aria-hidden="true"></i> Signin</a></li>
         @endif
         <li class="nav-item"><a href="{{route('contactUs')}}" class="nav-link"><i class="fa fa-phone" aria-hidden="true"></i> Contact</a></li>
         
-            {{-- @endguest --}}
         </ul>
     </div>
     </div>
