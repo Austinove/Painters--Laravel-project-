@@ -14,9 +14,7 @@ Route::get('/contactUs', function(){
 
 Auth::routes();
 
-Route::get('painter', function () {
-    return view('painter.index');
-})->name('painterDashboard')->middleware('auth');
+Route::get('painter', "PainterController@index")->name('painterDashboard')->middleware('auth', 'CheckUser');
 
 Route::get('painter/profile', function () {
     return view('painter.profile');

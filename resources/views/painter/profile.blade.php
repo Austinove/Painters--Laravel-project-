@@ -25,41 +25,45 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <h3 class="heading-section mb-4">Edit Profile Details</h3>
-                                <form class="fluid">
+                                <form class="fluid" id="edit_profile" method="post" action="javascript:void(0)">
+                                    <div class="alert alert-success d-none" id="msg_div">
+                                        <span id="res_message"></span>
+                                    </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="firstname">First Name*</label>
-                                            <input type="text" required class="form-control" id="inputAddress" placeholder="First Name">
+                                            <input type="text" name="firstname" required class="form-control" id="firstname" placeholder="First Name">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="secondname">Second Name*</label>
-                                            <input type="text" required class="form-control" id="inputAddress" placeholder="Second Name">
+                                            <input type="text" name="secondname" required class="form-control" id="secondname" placeholder="Second Name">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="firstname">Contact*</label>
-                                            <input type="text" required class="form-control" id="inputAddress" placeholder="Your Contact">
+                                            <input type="text" name="contact" required class="form-control" id="contact" placeholder="Your Contact">
                                             <small id="emailHelp" class="form-text text-muted">Contact is shown to client once job is approved.</small>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="email">Your Email*</label>
-                                            <input type="email" required class="form-control" id="inputAddress" autocomplete="false" placeholder="Email">
+                                            <input type="email" name="email" required class="form-control" id="email" autocomplete="false" placeholder="Email">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="location">Your Location*</label>
-                                        <input type="text" required class="form-control" id="exampleInputEmail1" placeholder="Your location district">   
+                                        <input type="text" name="location" required class="form-control" id="location" placeholder="Your location district">   
                                     </div>
                                     <div class="form-group">
                                         <label for="profilePic" class="label">Profile Picture</label>
                                         <div class="custom-file mb-3">
-                                            <input type="file" required class="custom-file-input" id="customFile" name="filename">
+                                            <input type="file" name="profile_pic" required class="custom-file-input" id="customFile" name="filename">
                                             <label class="custom-file-label" for="customFile">Choose file</label>
-                                        </div>  
+                                        </div> 
+                                        <input type="hidden" name="csrf-token" value={{csrf_token()}} />
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-outline-success">Save Your Profile</button>
+                                        <button type="submit" id="send_form" class="btn btn-outline-success">Save Your Profile</button>
                                     </div>
                                 </form>
                                 
@@ -362,6 +366,39 @@
                 $('#editModal').modal('show');
             })
         });
+        
+    $('#send_form').click(function(e){
+    e.preventDefault();
+    /*Ajax Request Header setup*/
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('#send_form').html('Sending..');
+    
+    /* Submit form data using ajax*/
+    $.ajax({
+        url: "{{ url('jquery-ajax-form-submit')}}",
+        method: 'post',
+        data: $('#contact_us').serialize(),
+        success: function(response){
+            //------------------------
+                $('#send_form').html('Submit');
+                $('#res_message').show();
+                $('#msg_div').html(response.msg);
+                $('#msg_div').removeClass('d-none');
+
+                document.getElementById("contact_us").reset(); 
+                setTimeout(function(){
+                $('#res_message').hide();
+                $('#msg_div').hide();
+                },10000);
+            //--------------------------
+        }});
+    });
+//------------
     </script>
 
     @endsection
